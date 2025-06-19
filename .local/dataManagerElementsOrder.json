@@ -1,0 +1,195 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "TransactionItem&StateMachine_1",
+        "SystemException&StateMachine_1",
+        "BusinessException&StateMachine_1",
+        "TransactionNumber&StateMachine_1",
+        "Config&StateMachine_1",
+        "RetryNumber&StateMachine_1",
+        "ConsecutiveSystemExceptions&StateMachine_1",
+        "dt_ExceptionTable&StateMachine_1",
+        "dt_EmailTable&StateMachine_1",
+        "str_MappingStatus&StateMachine_1",
+        "JobData&StateMachine_1",
+        "list_MailMessage&StateMachine_1",
+        "downloadResponse&Sequence_83",
+        "ShouldStop&Sequence_25",
+        "int_TempTransactionNumber&State_3",
+        "str_o365ApplicationId&Sequence_44",
+        "secstr_o365ApplicationSecret&Sequence_44"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "ConfigurationFileName",
+        "in_QueueName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Framework/Process.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "str_o365ApplicationId&Sequence_1",
+        "secstr_o365ApplicationSecret&Sequence_1",
+        "str_MailSearchQuery&Sequence_1",
+        "arr_EmailsFetched&Sequence_1",
+        "str_MailDestinationFolder&Sequence_1",
+        "str_EmailFolder&Sequence_1",
+        "str_EmailSubject&Sequence_1",
+        "lst_Attachments&Sequence_1",
+        "str_PrimaryKey&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_TransactionItem",
+        "in_Config",
+        "in_JobData"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Mail/AP_DownloadMailAttachments.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "str_DriveAttachmentFolder&Sequence_1",
+        "str_LogDateFormat&Sequence_1",
+        "str_DriveLetter&Sequence_1",
+        "str_LocalAttachmentFolder&Sequence_1",
+        "lst_Attachments&TryCatch_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_ERPVendorType",
+        "in_config",
+        "in_JobData",
+        "in_Mail",
+        "out_lst_Attachments",
+        "in_str_o365ApplicationId",
+        "in_secstr_o365ApplicationSecret"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Utility/AccountsPayable_Update_StagingLog.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dt_ExistingRuntimeLog&Sequence_4",
+        "str_ExistingPrimaryKey&Sequence_4",
+        "index&Sequence_20",
+        "Subject&Sequence_27"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_NewPrimaryKey",
+        "in_Config",
+        "in_dicMailMetadata",
+        "in_dicVendorInformation",
+        "in_strLocalRuntimeFilePath",
+        "in_AttachmentCollection",
+        "in_strErrorMessage",
+        "in_strDriveRuntimeFilePath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Utility/AP_UpdateStagingLog.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dt_ExistingRuntimeLog&Sequence_4",
+        "str_ExistingPrimaryKey&Sequence_4",
+        "str_DriveLetter&Sequence_4",
+        "str_LocalFilePath&Sequence_4",
+        "str_LocalFolderPath&Sequence_4",
+        "str_DriveFilePath&Sequence_4",
+        "index&Sequence_46",
+        "Subject&Sequence_45"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_NewPrimaryKey",
+        "in_AttachmentCollection",
+        "in_Config",
+        "in_strErrorMessage",
+        "in_TransactionItem",
+        "in_JobData"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Orchestrator/AP_AddQueueItem.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "index&Sequence_1",
+        "str_OrchestratorFolder&Sequence_1",
+        "str_QueueName&Sequence_1",
+        "str_VendorType&Sequence_1",
+        "str_EntityResponse&Sequence_1",
+        "dic_EntityResponse&Sequence_1",
+        "str_DriveLogFilePath&Sequence_1",
+        "dic_FilteredBehavior&Sequence_1",
+        "str_PostProcessingRule&Sequence_1",
+        "str_TargetFilePath&Sequence_5"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_AttachmentCollection",
+        "in_strAttachmentPrimaryKey",
+        "in_Config",
+        "in_JobData",
+        "in_TransactionItem"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Framework/SetTransactionStatus.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "secstr_o365ApplicationSecret&Flowchart_2",
+        "str_o365ApplicationId&Flowchart_2",
+        "ScreenshotPath&Flowchart_2",
+        "QueueRetry&Flowchart_2",
+        "arr_emailsfetched&Flowchart_2",
+        "str_MailSearchQuery&Flowchart_2",
+        "str_SE_EmailMessagePath&Flowchart_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_BusinessException",
+        "in_SystemException",
+        "in_Config",
+        "in_TransactionItem",
+        "io_RetryNumber",
+        "io_TransactionNumber",
+        "io_ConsecutiveSystemExceptions",
+        "in_ExceptionTable"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Framework/RetryCurrentTransaction.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "io_RetryNumber",
+        "io_TransactionNumber",
+        "in_SystemException",
+        "in_QueueRetry"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

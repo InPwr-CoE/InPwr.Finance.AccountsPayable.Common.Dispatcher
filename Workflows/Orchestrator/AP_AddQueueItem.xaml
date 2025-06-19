@@ -1,0 +1,697 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="AP_AddQueueItem" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_AttachmentCollection" Type="InArgument(scg:IEnumerable(x:String))" />
+    <x:Property Name="in_strAttachmentPrimaryKey" Type="InArgument(x:String)" />
+    <x:Property Name="in_JobData" Type="InArgument(ui:CurrentJobInfo)" />
+    <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+  </x:Members>
+  <this:AP_AddQueueItem.in_Config>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+  </this:AP_AddQueueItem.in_Config>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>706,3100</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>MEADP_AddFilestoQueue_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>DocumentFormat.OpenXml</x:String>
+      <x:String>DocumentFormat.OpenXml.InkML</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Enums</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files.Enums</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Mail</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Enums</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Models</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.Shared.Services.Graph.Mail.Models</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>DocumentFormat.OpenXml</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Extensions.DependencyModel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Input:&#xA;1)  in_Config: Response from Intialize Configuration activity as a dictionary.&#xA;2) in_JobData: Get current job information (Process and Tenant name) to access Share drive folder&#xA;3) in_dicVendorInformation: Get the vendor information and push them in Orchestrator queue.&#xA;4) in_RuntimeFilePath: Runtime stagging log file path.&#xA;5) in_dicMailMetadata: Get the Mail Metadata details and push them in Orchestrator queue.&#xA;6) in_AttachmentCollection: Downloaded PDF Attachment collections.&#xA;7) in_strAttachmentPrimaryKey: Attachment Primary key from the Runtime stagging log file.&#xA;&#xA;Description: This workflow will push the PDF attachment to Queue with required reference information.&#xA;&#xA;Output: N/A" DisplayName="AP_AddQueueItem" sap:VirtualizedContainerService.HintSize="716,2995" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="index" />
+      <Variable x:TypeArguments="x:String" Name="str_OrchestratorFolder" />
+      <Variable x:TypeArguments="x:String" Name="str_QueueName" />
+      <Variable x:TypeArguments="x:String" Name="str_VendorType" />
+      <Variable x:TypeArguments="x:String" Name="str_EntityResponse" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dic_EntityResponse" />
+      <Variable x:TypeArguments="x:String" Name="str_DriveLogFilePath" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dic_FilteredBehavior" />
+      <Variable x:TypeArguments="x:String" Name="str_PostProcessingRule" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - &quot;AP_AddQueueItem: Started&quot;" sap:VirtualizedContainerService.HintSize="654,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;AP_AddQueueItem: Started&quot;]" />
+    <Sequence sap2010:Annotation.AnnotationText="Initialize the required Information which has to be pushed to queue from the Dispatcher Transaction item" DisplayName="Input Validation Stage" sap:VirtualizedContainerService.HintSize="654,783" sap2010:WorkflowViewState.IdRef="Sequence_13">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:MultipleAssign DisplayName="Multiple Assign - Initialize" sap:VirtualizedContainerService.HintSize="479,241" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_VendorType]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Vendor_Type").ToString.Trim]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_OrchestratorFolder]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_Config("AP_ExtractionQueue_Folder").ToString().Replace("&lt;VendorType&gt;", str_VendorType)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_QueueName]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_Config("AP_ExtractionQueue_Name").ToString().Replace("&lt;VendorType&gt;", str_VendorType)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_EntityResponse]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("EntityResponse").ToString]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+      <ui:MultipleAssign DisplayName="Multiple Assign - Convert Entity String into Dic" sap:VirtualizedContainerService.HintSize="479,179" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dic_EntityResponse]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(Of String, String)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dic_EntityResponse]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" xml:space="preserve">[str_EntityResponse.Split({" | "}, StringSplitOptions.None) _
+    .Select(Function(pair) pair.Split({":"c}, 2)) _
+    .ToDictionary(Function(parts) parts(0).Trim, Function(parts) parts(1).Trim)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+      <ui:MultipleAssign DisplayName="Multiple Assign - Convert Entity String into Dic" sap:VirtualizedContainerService.HintSize="479,201" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dic_FilteredBehavior]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(Of String, String)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dic_FilteredBehavior]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" xml:space="preserve">[dic_EntityResponse.
+    Where(Function(kvp) kvp.Key.ToLower.Contains("behavior")).
+    ToDictionary(Function(kvp) kvp.Key, Function(kvp) kvp.Value)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_PostProcessingRule]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[String.Join(" | ", dic_FilteredBehavior.Select(Function(kvp) kvp.Key &amp; ": " &amp; kvp.Value))]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+    </Sequence>
+    <Sequence sap2010:Annotation.AnnotationText="Copy the PDF attachment from local folder to Share drive folder and add them to DU queue with the required information." DisplayName="Core Process" sap:VirtualizedContainerService.HintSize="654,1595" sap2010:WorkflowViewState.IdRef="Sequence_7">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[index]" DisplayName="For Each Current file to Queue" sap:VirtualizedContainerService.HintSize="592,1433" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_AttachmentCollection]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="x:String">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:String" Name="currentFile" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body - Add file to queue" sap:VirtualizedContainerService.HintSize="558,1296" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="str_TargetFilePath" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message - &quot;AP_AddQueueItem: Adding file to [ &quot;+in_Config(&quot;AP_TEMP_Orchestrator_DUQueueName&quot;).ToString + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(str_TargetFilePath)" sap:VirtualizedContainerService.HintSize="496,173" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AP_AddQueueItem: Processing Attachment path | &quot;+ currentFile]" />
+              <ui:LogMessage DisplayName="Log Message - &quot;AP_AddQueueItem: Adding file to [ &quot;+in_Config(&quot;AP_TEMP_Orchestrator_DUQueueName&quot;).ToString + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(str_TargetFilePath)" sap:VirtualizedContainerService.HintSize="496,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AP_AddQueueItem: Adding file to [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(str_TargetFilePath)]" />
+              <Switch x:TypeArguments="x:String" DisplayName="Switch - Vendor Based Queue" Expression="[str_VendorType]" sap:VirtualizedContainerService.HintSize="496,698" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                <Switch.Default>
+                  <Sequence DisplayName="Unknown" sap:VirtualizedContainerService.HintSize="416,374" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message - &quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText) + &quot; | Exception message: &quot;+exception.Message" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Error" Message="[&quot;AP_AddQueueItem: Unknown queue Name [ &quot;+str_QueueName + &quot; ] | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile)]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                    <Throw DisplayName="Throw - New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText))" Exception="[New SystemException(&quot;AP_AddQueueItem: Unknown queue Name [ &quot;+str_QueueName + &quot; ] | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile))]" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="Throw_11" />
+                  </Sequence>
+                </Switch.Default>
+                <TryCatch x:Key="TEMP" DisplayName="Try Catch - Add File to Queue" sap:VirtualizedContainerService.HintSize="456,267" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <Sequence DisplayName="Try -Add File to Queue" sap:VirtualizedContainerService.HintSize="416,305" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[str_OrchestratorFolder]" sap:VirtualizedContainerService.HintSize="354,217" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" ItemInformationCollection="[in_TransactionItem.SpecificContent _&#xA;    .Where(Function(loopingKey) loopingKey.Key &lt;&gt; &quot;EntityResponse&quot;) _&#xA;    .ToDictionary(Function(loopingKey) loopingKey.Key, Function(loopingKey) loopingKey.Value)]" Priority="Normal" QueueType="[str_QueueName]" Reference="[Path.GetFileName(currentFile)]">
+                        <ui:AddQueueItem.ItemInformation>
+                          <InArgument x:TypeArguments="x:String" x:Key="PrimaryAttachmentKey">[in_strAttachmentPrimaryKey]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="AttachmentPath">[currentFile]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="Total_PDFAttachment_Count">[in_AttachmentCollection.Count]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="Current_PDFAttachment_Count">[(index+1)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="PostProcessingRule">[str_PostProcessingRule]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_GL_Account">[dic_EntityResponse("ERPVendorGLAccount").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_CostCenter">[dic_EntityResponse("ERPVendorCostCenter").ToString]</InArgument>
+                        </ui:AddQueueItem.ItemInformation>
+                      </ui:AddQueueItem>
+                    </Sequence>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="422,105" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Catch - Add File to Queue" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message - &quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText) + &quot; | Exception message: &quot;+exception.Message" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Error" Message="[&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile) + &quot; | Exception message: &quot;+exception.Message]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:LogMessage>
+                          <Throw DisplayName="Throw - New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText))" Exception="[New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile))]" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="Throw_5" />
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+                <TryCatch x:Key="OH_RENT" DisplayName="Try Catch - Add File to Queue" sap:VirtualizedContainerService.HintSize="245,25" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <Sequence DisplayName="Try -Add File to Queue" sap:VirtualizedContainerService.HintSize="416,305" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[str_OrchestratorFolder]" sap:VirtualizedContainerService.HintSize="354,217" sap2010:WorkflowViewState.IdRef="AddQueueItem_3" ItemInformationCollection="[in_TransactionItem.SpecificContent _&#xA;    .Where(Function(loopingKey) loopingKey.Key &lt;&gt; &quot;EntityResponse&quot;) _&#xA;    .ToDictionary(Function(loopingKey) loopingKey.Key, Function(loopingKey) loopingKey.Value)]" Priority="Normal" QueueType="[str_QueueName]" Reference="[Path.GetFileName(currentFile)]">
+                        <ui:AddQueueItem.ItemInformation>
+                          <InArgument x:TypeArguments="x:String" x:Key="PrimaryAttachmentKey">[in_strAttachmentPrimaryKey]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="AttachmentPath">[currentFile]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="Total_PDFAttachment_Count">[in_AttachmentCollection.Count]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="Current_PDFAttachment_Count">[(index+1)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="PostProcessingRule">[str_PostProcessingRule]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_Header_GLAccount">[dic_EntityResponse("VendorHeaderGLAccount").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_Header_CostCenter">[dic_EntityResponse("VendorHeaderCostCenter").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_LineItem_GLAccount">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("VendorLineItemGLAccount")),dic_EntityResponse("VendorLineItemGLAccount").ToString,String.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_LineItem_CostCenter">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("VendorLineItemCostCenter")),dic_EntityResponse("VendorLineItemCostCenter").ToString,String.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_RoutingCode">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("VendorHeaderRoutingCode")),dic_EntityResponse("VendorHeaderRoutingCode").ToString,String.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Invoice_LineItem">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("InvoiceLineItem")),dic_EntityResponse("InvoiceLineItem").ToString,String.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Invoice_LineItem_Amount">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("InvoiceLineItemAmount")),dic_EntityResponse("InvoiceLineItemAmount").ToString,string.Empty)]</InArgument>
+                        </ui:AddQueueItem.ItemInformation>
+                      </ui:AddQueueItem>
+                    </Sequence>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="420,22" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Catch - Add File to Queue" sap:VirtualizedContainerService.HintSize="416,374" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message - &quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText) + &quot; | Exception message: &quot;+exception.Message" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Error" Message="[&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile) + &quot; | Exception message: &quot;+exception.Message]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:LogMessage>
+                          <Throw DisplayName="Throw - New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText))" Exception="[New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile))]" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="Throw_6" />
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+                <TryCatch x:Key="OH_SWEEP" DisplayName="Try Catch - Add File to Queue" sap:VirtualizedContainerService.HintSize="245,25" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <Sequence DisplayName="Try -Add File to Queue" sap:VirtualizedContainerService.HintSize="416,305" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[str_OrchestratorFolder]" sap:VirtualizedContainerService.HintSize="354,217" sap2010:WorkflowViewState.IdRef="AddQueueItem_6" ItemInformationCollection="[in_TransactionItem.SpecificContent _&#xA;    .Where(Function(loopingKey) loopingKey.Key &lt;&gt; &quot;EntityResponse&quot;) _&#xA;    .ToDictionary(Function(loopingKey) loopingKey.Key, Function(loopingKey) loopingKey.Value)]" Priority="Normal" QueueType="[str_QueueName]" Reference="[Path.GetFileName(currentFile)]">
+                        <ui:AddQueueItem.ItemInformation>
+                          <InArgument x:TypeArguments="x:String" x:Key="PrimaryAttachmentKey">[in_strAttachmentPrimaryKey]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="AttachmentPath">[currentFile]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="Total_PDFAttachment_Count">[in_AttachmentCollection.Count]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="Current_PDFAttachment_Count">[(index+1)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="PostProcessingRule">[str_PostProcessingRule]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_Header_GLAccount">[dic_EntityResponse("VendorHeaderGLAccount").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_Header_CostCenter">[dic_EntityResponse("VendorHeaderCostCenter").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_LineItem_GLAccount">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("VendorLineItemGLAccount")),dic_EntityResponse("VendorLineItemGLAccount").ToString,String.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_LineItem_CostCenter">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("VendorLineItemCostCenter")),dic_EntityResponse("VendorLineItemCostCenter").ToString,String.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_RoutingCode">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("VendorHeaderRoutingCode")),dic_EntityResponse("VendorHeaderRoutingCode").ToString,String.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Invoice_LineItem">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("InvoiceLineItem")),dic_EntityResponse("InvoiceLineItem").ToString,String.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Invoice_LineItem_Amount">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("InvoiceLineItemAmount")),dic_EntityResponse("InvoiceLineItemAmount").ToString,string.Empty)]</InArgument>
+                        </ui:AddQueueItem.ItemInformation>
+                      </ui:AddQueueItem>
+                    </Sequence>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="420,22" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Catch - Add File to Queue" sap:VirtualizedContainerService.HintSize="416,374" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message - &quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText) + &quot; | Exception message: &quot;+exception.Message" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Error" Message="[&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile) + &quot; | Exception message: &quot;+exception.Message]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:LogMessage>
+                          <Throw DisplayName="Throw - New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText))" Exception="[New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile))]" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="Throw_9" />
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+                <TryCatch x:Key="OH_GENERAL" DisplayName="Try Catch - Add File to Queue" sap:VirtualizedContainerService.HintSize="245,25" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <Sequence DisplayName="Try -Add File to Queue" sap:VirtualizedContainerService.HintSize="416,305" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[str_OrchestratorFolder]" sap:VirtualizedContainerService.HintSize="354,217" sap2010:WorkflowViewState.IdRef="AddQueueItem_7" ItemInformationCollection="[in_TransactionItem.SpecificContent _&#xA;    .Where(Function(loopingKey) loopingKey.Key &lt;&gt; &quot;EntityResponse&quot;) _&#xA;    .ToDictionary(Function(loopingKey) loopingKey.Key, Function(loopingKey) loopingKey.Value)]" Priority="Normal" QueueType="[str_QueueName]" Reference="[Path.GetFileName(currentFile)]">
+                        <ui:AddQueueItem.ItemInformation>
+                          <InArgument x:TypeArguments="x:String" x:Key="PrimaryAttachmentKey">[in_strAttachmentPrimaryKey]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="AttachmentPath">[currentFile]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="Total_PDFAttachment_Count">[in_AttachmentCollection.Count]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="Current_PDFAttachment_Count">[(index+1)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="PostProcessingRule">[str_PostProcessingRule]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_Header_GLAccount">[dic_EntityResponse("VendorHeaderGLAccount").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_Header_CostCenter">[dic_EntityResponse("VendorHeaderCostCenter").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_LineItem_GLAccount">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("VendorLineItemGLAccount")),dic_EntityResponse("VendorLineItemGLAccount").ToString,String.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_LineItem_CostCenter">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("VendorLineItemCostCenter")),dic_EntityResponse("VendorLineItemCostCenter").ToString,String.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Vendor_RoutingCode">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("VendorHeaderRoutingCode")),dic_EntityResponse("VendorHeaderRoutingCode").ToString,String.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Invoice_LineItem">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("InvoiceLineItem")),dic_EntityResponse("InvoiceLineItem").ToString,String.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Invoice_LineItem_Amount">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("InvoiceLineItemAmount")),dic_EntityResponse("InvoiceLineItemAmount").ToString,string.Empty)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Invoice_SalesTaxCode">[If(dic_EntityResponse.Any(Function(kvp) kvp.Key.Equals("InvoiceSalesTaxCode")),dic_EntityResponse("InvoiceSalesTaxCode").ToString,string.Empty)]</InArgument>
+                        </ui:AddQueueItem.ItemInformation>
+                      </ui:AddQueueItem>
+                    </Sequence>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="422,444" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Catch - Add File to Queue" sap:VirtualizedContainerService.HintSize="416,374" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message - &quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText) + &quot; | Exception message: &quot;+exception.Message" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Error" Message="[&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile) + &quot; | Exception message: &quot;+exception.Message]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:LogMessage>
+                          <Throw DisplayName="Throw - New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText))" Exception="[New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile))]" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="Throw_10" />
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+                <TryCatch x:Key="PO_MATERIAL" DisplayName="Try Catch - Add File to Queue" sap:VirtualizedContainerService.HintSize="454,533" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <Sequence DisplayName="Try -Add File to Queue" sap:VirtualizedContainerService.HintSize="416,305" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[str_OrchestratorFolder]" sap:VirtualizedContainerService.HintSize="354,217" sap2010:WorkflowViewState.IdRef="AddQueueItem_5" ItemInformationCollection="[in_TransactionItem.SpecificContent _&#xA;    .Where(Function(loopingKey) loopingKey.Key &lt;&gt; &quot;EntityResponse&quot;) _&#xA;    .ToDictionary(Function(loopingKey) loopingKey.Key, Function(loopingKey) loopingKey.Value)]" Priority="Normal" QueueType="[str_QueueName]" Reference="[Path.GetFileName(currentFile)]">
+                        <ui:AddQueueItem.ItemInformation>
+                          <InArgument x:TypeArguments="x:String" x:Key="PrimaryAttachmentKey">[in_strAttachmentPrimaryKey]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="AttachmentPath">[currentFile]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="Total_PDFAttachment_Count">[in_AttachmentCollection.Count]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="Current_PDFAttachment_Count">[(index+1)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="PostProcessingRule">[str_PostProcessingRule]</InArgument>
+                        </ui:AddQueueItem.ItemInformation>
+                      </ui:AddQueueItem>
+                    </Sequence>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="420,22" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Catch - Add File to Queue" sap:VirtualizedContainerService.HintSize="416,374" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message - &quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText) + &quot; | Exception message: &quot;+exception.Message" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Error" Message="[&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile) + &quot; | Exception message: &quot;+exception.Message]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:LogMessage>
+                          <Throw DisplayName="Throw - New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText))" Exception="[New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile))]" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="Throw_8" />
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+                <TryCatch x:Key="PO_SubContractor" DisplayName="Try Catch - Add File to Queue" sap:VirtualizedContainerService.HintSize="245,25" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <Sequence DisplayName="Try -Add File to Queue" sap:VirtualizedContainerService.HintSize="416,305" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[str_OrchestratorFolder]" sap:VirtualizedContainerService.HintSize="354,217" sap2010:WorkflowViewState.IdRef="AddQueueItem_4" ItemInformationCollection="[in_TransactionItem.SpecificContent _&#xA;    .Where(Function(loopingKey) loopingKey.Key &lt;&gt; &quot;EntityResponse&quot;) _&#xA;    .ToDictionary(Function(loopingKey) loopingKey.Key, Function(loopingKey) loopingKey.Value)]" Priority="Normal" QueueType="[str_QueueName]" Reference="[Path.GetFileName(currentFile)]">
+                        <ui:AddQueueItem.ItemInformation>
+                          <InArgument x:TypeArguments="x:String" x:Key="PrimaryAttachmentKey">[in_strAttachmentPrimaryKey]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="AttachmentPath">[currentFile]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="Total_PDFAttachment_Count">[in_AttachmentCollection.Count]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="Current_PDFAttachment_Count">[(index+1)]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="PostProcessingRule">[str_PostProcessingRule]</InArgument>
+                        </ui:AddQueueItem.ItemInformation>
+                      </ui:AddQueueItem>
+                    </Sequence>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="420,22" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Catch - Add File to Queue" sap:VirtualizedContainerService.HintSize="416,374" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message - &quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText) + &quot; | Exception message: &quot;+exception.Message" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Error" Message="[&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile) + &quot; | Exception message: &quot;+exception.Message]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:LogMessage>
+                          <Throw DisplayName="Throw - New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentText))" Exception="[New SystemException(&quot;AP_AddQueueItem: Failed to add file in [ &quot;+str_QueueName + &quot; ] Queue | Filename: &quot;+Path.GetFileNameWithoutExtension(currentFile))]" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="Throw_7" />
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+              </Switch>
+              <ui:LogMessage DisplayName="Log Message - &quot;AP_AddQueueItem: Added file to [ &quot;+str_QueueName + &quot; ] Queue with the required information.&quot;" sap:VirtualizedContainerService.HintSize="496,164" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AP_AddQueueItem: Added file to [ &quot;+str_QueueName + &quot; ] Queue with the required information.&quot;]" />
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ForEach>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message - &quot;AP_AddQueueItem: Ended&quot;" sap:VirtualizedContainerService.HintSize="654,164" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;AP_AddQueueItem: Ended&quot;]" />
+  </Sequence>
+</Activity>

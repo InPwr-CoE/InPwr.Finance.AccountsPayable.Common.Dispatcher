@@ -1,0 +1,15 @@
+{
+  "Tags": [
+    {
+      "Key": "Library"
+    },
+    {
+      "Key": "Office 365"
+    },
+    {
+      "Key": "DataService"
+    }
+  ],
+  "SeparateRuntimeDependencies": true,
+  "IncludeSources": true
+}

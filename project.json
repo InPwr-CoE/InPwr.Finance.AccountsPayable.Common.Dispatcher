@@ -1,0 +1,69 @@
+{
+  "name": "APInvoice.Dispatcher",
+  "projectId": "426aa693-240c-4f01-905c-a489dd9d4688",
+  "description": "Accounts payable receives all unprocessed invoices from vendors into a specific Outlook inbox, accounting@inpwric.com.  All invoices are received in the form of .PDF attachments, and are classified by vendor type before being processed into the organization’s ERP system, Trimble/Spectrum.  The different vendor type classifications of the attachments in known scope are: TEMP, OH, PO, Non-PO, and Credit Memo.",
+  "main": "Main.xaml",
+  "dependencies": {
+    "InPwr.CoE.CustomComponent.DataServices": "[1.0.1]",
+    "InPwr.CoE.CustomComponent.Mail": "[1.0.13]",
+    "InPwr.CoE.CustomComponent.Utility": "[1.0.12]",
+    "UiPath.MicrosoftOffice365.Activities": "[3.1.21]",
+    "UiPath.System.Activities": "[24.10.6]",
+    "UiPath.UIAutomation.Activities": "[24.10.10]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "24.10.1.0",
+  "projectVersion": "1.0.28",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": false,
+    "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "a0b2bafc-fcaa-48ee-bd63-44e75db45edb",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Coded Workflow\\ShortenFilePath.cs",
+      "uniqueId": "d01b0e62-f966-4ec8-bde3-bc3d4342f414",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}

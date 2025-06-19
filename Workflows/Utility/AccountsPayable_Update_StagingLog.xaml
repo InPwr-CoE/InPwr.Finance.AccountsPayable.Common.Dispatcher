@@ -1,0 +1,377 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="AccountsPayable_Update_StagingLog" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dicMailMetadata" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="in_dicVendorInformation" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="in_strLocalRuntimeFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_AttachmentCollection" Type="InArgument(scg:IEnumerable(x:String))" />
+    <x:Property Name="in_strErrorMessage" Type="InArgument(x:String)" />
+    <x:Property Name="in_strDriveRuntimeFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="out_NewPrimaryKey" Type="OutArgument(x:String)" />
+  </x:Members>
+  <this:AccountsPayable_Update_StagingLog.in_AttachmentCollection>
+    <InArgument x:TypeArguments="scg:IEnumerable(x:String)" />
+  </this:AccountsPayable_Update_StagingLog.in_AttachmentCollection>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1239,3219</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>AP_TEMP_GetMail</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>InPwr_CoE_CustomComponent_Utility.Utility</x:String>
+      <x:String>InPwr.CoE.CustomComponent.Utility</x:String>
+      <x:String>InPwr.CoE.CustomComponent.Utility.ObjectRepository</x:String>
+      <x:String>InPwr.CustomMethods</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Activities.System.Collections</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.MicrosoftOffice365</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Enums</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files.Enums</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Mail</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Enums</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.Shared.Services.Graph.Mail.Models</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>InPwr.CoE.CustomComponent.DataServices.Core</AssemblyReference>
+      <AssemblyReference>InPwr.CoE.CustomComponent.Mail.Core</AssemblyReference>
+      <AssemblyReference>InPwr.CoE.CustomComponent.Utility</AssemblyReference>
+      <AssemblyReference>InPwr.CoE.CustomComponent.Utility.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Input:&#xA;1) in_Config: Response from Intialize Configuration activity as a dictionary.&#xA;2) in_JobData: Get current job information (Process and Tenant name) to create Runtime folder path.&#xA;3) in_dicVendorInformation: Get the vendor information (vendor name) to create Runtime folder path.&#xA;&#xA;&#xA;Description : This Workflow used to update the mail and vendor information in Runtime Email Staging log excel file.&#xA;&#xA;&#xA;Output: N/A&#xA;" DisplayName="AccountsPayable_Update_StagingLog" sap:VirtualizedContainerService.HintSize="682,3114" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_ExistingRuntimeLog" />
+      <Variable x:TypeArguments="x:String" Name="str_ExistingPrimaryKey" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_Update_StagingLog: Started&quot;" sap:VirtualizedContainerService.HintSize="620,173" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AccountsPayable_Update_StagingLog: Started&quot;]" />
+    <Sequence sap2010:Annotation.AnnotationText="Check if Runtime Staging Log Excel file exist." DisplayName="Input Validation Stage" sap:VirtualizedContainerService.HintSize="620,787" sap2010:WorkflowViewState.IdRef="Sequence_19">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_Update_StagingLog: Read Runtime Staging log file | &quot;+in_strLocalRuntimeFilePath" sap:VirtualizedContainerService.HintSize="479,173" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AccountsPayable_Update_StagingLog: Read Runtime Staging log file | &quot;+in_strLocalRuntimeFilePath]" />
+      <ui:ReadRange WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_ExistingRuntimeLog]" DisplayName="Read Range Workbook - RuntimeLogFile" sap:VirtualizedContainerService.HintSize="479,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;AP_SharedDrive_Runtime_SheetName&quot;).ToString]" WorkbookPath="[in_strLocalRuntimeFilePath]">
+        <ui:ReadRange.Range>
+          <InArgument x:TypeArguments="x:String">
+            <Literal x:TypeArguments="x:String" Value="" />
+          </InArgument>
+        </ui:ReadRange.Range>
+      </ui:ReadRange>
+      <ui:MultipleAssign DisplayName="Multiple Assign - Initialize Primary Key" sap:VirtualizedContainerService.HintSize="479,179" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_ExistingPrimaryKey]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[If(dt_ExistingRuntimeLog.RowCount &gt; 0,dt_ExistingRuntimeLog.Rows((dt_ExistingRuntimeLog.Rows.Count-1))(0).ToString,string.Empty)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[out_NewPrimaryKey]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[If(String.IsNullOrEmpty(str_ExistingPrimaryKey), "1", (CInt(str_ExistingPrimaryKey) + 1).ToString)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+      <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_Update_StagingLog: Existing Primary key [ &quot;+ str_ExistingPrimaryKey + &quot; ]. | New Primary key [ &quot;+str_NewPrimaryKey + &quot; ].&quot;" sap:VirtualizedContainerService.HintSize="479,164" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AccountsPayable_Update_StagingLog: Existing Primary key [ &quot;+ str_ExistingPrimaryKey + &quot; ]. | New Primary key [ &quot;+out_NewPrimaryKey + &quot; ].&quot;]" />
+    </Sequence>
+    <Sequence sap2010:Annotation.AnnotationText="Update the Mail and Vendor information in the Runtime Staging Log excel file.&#xA;-PrimaryAttachmentKey&#xA;-AttachmentCount&#xA;-AttachmentFilename&#xA;-MessageDate&#xA;-MessageTime&#xA;-MessageSender&#xA;-MessageSubject&#xA;-Excluded&#xA;-EntityVendorName&#xA;-EntityVendorID&#xA;-EntityVendorTypeCode&#xA;-Comment&#xA;&#xA;Copy the local Runtime log file to share drive folder.&#xA;" DisplayName="Core Process" sap:VirtualizedContainerService.HintSize="620,1725" sap2010:WorkflowViewState.IdRef="Sequence_20">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Int32" Name="index" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[in_AttachmentCollection.Count &gt; 0]" DisplayName="Handle Attachment condition and add data row" sap:VirtualizedContainerService.HintSize="558,57" sap2010:WorkflowViewState.IdRef="If_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Then - Attachment Update" sap:VirtualizedContainerService.HintSize="512,1041" sap2010:WorkflowViewState.IdRef="Sequence_34">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_Update_StagingLog: Total PDF Attachment count [ &quot;+in_AttachmentCollection.Count.ToString +&quot; ] from the current mail.&quot;" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AccountsPayable_Update_StagingLog: Total PDF Attachment count [ &quot;+in_AttachmentCollection.Count.ToString +&quot; ] from the current mail.&quot;]" />
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[index]" DisplayName="For Each PDF Attachment" sap:VirtualizedContainerService.HintSize="450,780" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_AttachmentCollection]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="currentFile" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body - Update Attachment details" sap:VirtualizedContainerService.HintSize="416,643" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="Subject" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_Update_StagingLog: Adding data for the attachment [ &quot;+currentFile +&quot; ] with mail and vendor information.&quot;" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AccountsPayable_Update_StagingLog: Adding data for the attachment [ &quot;+currentFile +&quot; ] with mail and vendor information.&quot;]" />
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{out_NewPrimaryKey,(index+1).ToString,Path.GetFileNameWithoutExtension(currentFile),in_dicMailMetadata(&quot;Date&quot;).ToString,in_dicMailMetadata(&quot;Time&quot;).ToString,in_dicMailMetadata(&quot;FromAddress&quot;).ToString,in_dicMailMetadata(&quot;Subject&quot;),in_dicVendorInformation(&quot;IsVendorExcluded&quot;).ToString,in_dicVendorInformation(&quot;ERPVendorName&quot;).ToString,in_dicVendorInformation(&quot;ERPVendorID&quot;).ToString,in_dicVendorInformation(&quot;ERPVendorType&quot;).ToString,in_strErrorMessage}]" DataTable="[dt_ExistingRuntimeLog]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="354,218" sap2010:WorkflowViewState.IdRef="AddDataRow_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:AddDataRow>
+                    <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_Update_StagingLog: Added the mail and vendor information in Existing datatable.&quot;" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_33" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AccountsPayable_Update_StagingLog: Added the mail and vendor information in Existing datatable.&quot;]" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ForEach>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else - No Attachment Update" sap:VirtualizedContainerService.HintSize="416,643" sap2010:WorkflowViewState.IdRef="Sequence_35">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_Update_StagingLog: Adding data row without attachment details.&quot;" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AccountsPayable_Update_StagingLog: Adding data row without attachment details.&quot;]" />
+            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{out_NewPrimaryKey,&quot;0&quot;,String.Empty,in_dicMailMetadata(&quot;Date&quot;).ToString,in_dicMailMetadata(&quot;Time&quot;).ToString,in_dicMailMetadata(&quot;FromAddress&quot;).ToString,in_dicMailMetadata(&quot;Subject&quot;),in_dicVendorInformation(&quot;IsVendorExcluded&quot;).ToString,in_dicVendorInformation(&quot;ERPVendorName&quot;).ToString,in_dicVendorInformation(&quot;ERPVendorID&quot;).ToString,in_dicVendorInformation(&quot;ERPVendorType&quot;).ToString,in_strErrorMessage}]" DataTable="[dt_ExistingRuntimeLog]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="354,218" sap2010:WorkflowViewState.IdRef="AddDataRow_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:AddDataRow>
+            <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_Update_StagingLog: Added the mail and vendor information in Existing datatable.&quot;" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AccountsPayable_Update_StagingLog: Added the mail and vendor information in Existing datatable.&quot;]" />
+          </Sequence>
+        </If.Else>
+      </If>
+      <ui:WriteRange WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_ExistingRuntimeLog]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="558,148" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[in_Config(&quot;AP_SharedDrive_Runtime_SheetName&quot;).ToString]" WorkbookPath="[in_strLocalRuntimeFilePath]">
+        <ui:WriteRange.StartingCell>
+          <InArgument x:TypeArguments="x:String">
+            <Literal x:TypeArguments="x:String" Value="" />
+          </InArgument>
+        </ui:WriteRange.StartingCell>
+      </ui:WriteRange>
+      <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_Update_StagingLog: Updated the Runtime Log file | &quot;+in_strLocalRuntimeFilePath" sap:VirtualizedContainerService.HintSize="558,173" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AccountsPayable_Update_StagingLog: Updated the Runtime Log file | &quot;+in_strLocalRuntimeFilePath]" />
+      <TryCatch DisplayName="Try Catch - Copy RuntimeLog file to share drive" sap:VirtualizedContainerService.HintSize="558,811" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <TryCatch.Try>
+          <Sequence DisplayName="Try - Copy RuntimeLog file to share drive" sap:VirtualizedContainerService.HintSize="520,551" sap2010:WorkflowViewState.IdRef="Sequence_32">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:RetryScope DisplayName="Retry Scope - Copy RuntimeLog file to share drive" sap:VirtualizedContainerService.HintSize="458,463" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[If(in_Config(&quot;AP_SharedDrive_RetryCount&quot;) Is Nothing, 3, Convert.ToInt32(in_Config(&quot;AP_SharedDrive_RetryCount&quot;)))]" RetryInterval="[New TimeSpan(0,0,If(in_Config(&quot;AP_SharedDrive_RetryInterval&quot;) Is Nothing, 3, Convert.ToInt32(in_Config(&quot;AP_SharedDrive_RetryInterval&quot;))))]">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action -  Copy RuntimeLog file to share drive" sap:VirtualizedContainerService.HintSize="416,265" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_strDriveRuntimeFilePath]" DisplayName="Copy RuntimeLog file to share drive" sap:VirtualizedContainerService.HintSize="354,177" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_strLocalRuntimeFilePath]" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:RetryScope>
+          </Sequence>
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="524,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ActivityAction x:TypeArguments="s:Exception">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Catch - Copy RuntimeLog file to share drive" sap:VirtualizedContainerService.HintSize="416,374" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_Update_StagingLog: Unable to copy the Runtime log file from local folder [ &quot;+in_strLocalRuntimeFilePath +&quot; ] to Share drive folder [ &quot;+in_strDriveRuntimeFilePath +&quot; ]. | &quot;+ in_Config(&quot;AP_O365_MailFolder_ManualReview&quot;).ToString +&quot; | Exception message: &quot;+exception.Message" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="LogMessage_34" Level="Error" Message="[&quot;AccountsPayable_Update_StagingLog: Unable to copy the Runtime log file from local folder [ &quot;+in_strLocalRuntimeFilePath +&quot; ] to Share drive folder [ &quot;+in_strDriveRuntimeFilePath +&quot; ]. | &quot;+ in_Config(&quot;AP_O365_MailFolder_ManualReview&quot;).ToString +&quot; | Exception message: &quot;+exception.Message]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+                <Throw DisplayName="Throw - New SystemException(&quot;AccountsPayable_Update_StagingLog: Unable to copy the Runtime log file from local folder [ &quot;+in_strLocalRuntimeFilePath +&quot; ] to Share drive folder [ &quot;+in_strDriveRuntimeFilePath +&quot; ]. | &quot;+ in_Config(&quot;AP_O365_MailFolder_ManualReview&quot;).ToString)" Exception="[New SystemException(&quot;AccountsPayable_Update_StagingLog: Unable to copy the Runtime log file from local folder [ &quot;+in_strLocalRuntimeFilePath +&quot; ] to Share drive folder [ &quot;+in_strDriveRuntimeFilePath +&quot; ]. | &quot;+ in_Config(&quot;AP_O365_MailFolder_ManualReview&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="354,114" sap2010:WorkflowViewState.IdRef="Throw_3" />
+              </Sequence>
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+      </TryCatch>
+      <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_Update_StagingLog: Copied the Runtime log file from local folder [ &quot;+in_strLocalRuntimeFilePath +&quot; ] to Share drive folder [ &quot;+in_strDriveRuntimeFilePath +&quot; ].&quot;" sap:VirtualizedContainerService.HintSize="558,164" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AccountsPayable_Update_StagingLog: Copied the Runtime log file from local folder [ &quot;+in_strLocalRuntimeFilePath +&quot; ] to Share drive folder [ &quot;+in_strDriveRuntimeFilePath +&quot; ].&quot;]" />
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_Update_StagingLog: Ended&quot;" sap:VirtualizedContainerService.HintSize="620,164" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;AccountsPayable_Update_StagingLog: Ended&quot;]" />
+  </Sequence>
+</Activity>
