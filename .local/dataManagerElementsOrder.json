@@ -63,11 +63,12 @@
       "Path": "Workflows/Mail/AP_DownloadMailAttachments.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "str_TargetFilePath&Sequence_1",
+        "str_FileName&Sequence_1",
         "str_DriveAttachmentFolder&Sequence_1",
         "str_LogDateFormat&Sequence_1",
         "str_DriveLetter&Sequence_1",
-        "str_LocalAttachmentFolder&Sequence_1",
-        "lst_Attachments&TryCatch_1"
+        "str_LocalAttachmentFolder&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_ERPVendorType",
@@ -107,12 +108,12 @@
       "Path": "Workflows/Utility/AP_UpdateStagingLog.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "str_DriveFilePath&Sequence_4",
         "dt_ExistingRuntimeLog&Sequence_4",
         "str_ExistingPrimaryKey&Sequence_4",
         "str_DriveLetter&Sequence_4",
         "str_LocalFilePath&Sequence_4",
         "str_LocalFolderPath&Sequence_4",
-        "str_DriveFilePath&Sequence_4",
         "index&Sequence_46",
         "Subject&Sequence_45"
       ],
@@ -165,6 +166,7 @@
         "str_SE_EmailMessagePath&Flowchart_2"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_JobData",
         "in_BusinessException",
         "in_SystemException",
         "in_Config",

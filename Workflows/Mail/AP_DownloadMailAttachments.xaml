@@ -20,7 +20,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>943,2733</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>943,1803</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AP_DownloadMailAttachments_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -175,7 +175,7 @@
       <AssemblyReference>InPwr.CoE.CustomComponent.Mail.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AP_DownloadMailAttachments" sap:VirtualizedContainerService.HintSize="699,2668" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="AP_DownloadMailAttachments" sap:VirtualizedContainerService.HintSize="699,1738" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_DriveAttachmentFolder" />
       <Variable x:TypeArguments="x:String" Name="str_LogDateFormat" />
@@ -265,17 +265,17 @@
         </sap:WorkflowViewStateService.ViewState>
       </iu:Manage_Folder>
     </Sequence>
-    <Sequence DisplayName="Core Process" sap:VirtualizedContainerService.HintSize="637,2186" sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <Sequence DisplayName="Core Process" sap:VirtualizedContainerService.HintSize="637,1256" sap2010:WorkflowViewState.IdRef="Sequence_7">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <TryCatch DisplayName="Try DownLoading Attachments" sap:VirtualizedContainerService.HintSize="575,573" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch DisplayName="Try DownLoading Attachments" sap:VirtualizedContainerService.HintSize="575,57" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -283,10 +283,10 @@
           <im:Download_Email_Attachment Advanced="{x:Null}" resourceAttachments="{x:Null}" AttachmentCollection="[out_lst_Attachments]" DestinationFolderPath="[str_LocalAttachmentFolder]" DisplayName="Download Email Attachment" sap:VirtualizedContainerService.HintSize="334,192" sap2010:WorkflowViewState.IdRef="Download_Email_Attachment_1" MailMessage="[in_Mail]" Standard="PDF" />
         </TryCatch.Try>
         <TryCatch.Catches>
-          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="422,379" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -294,7 +294,7 @@
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Catch - Download Attachment" sap:VirtualizedContainerService.HintSize="416,309" sap2010:WorkflowViewState.IdRef="Sequence_18">
+              <Sequence DisplayName="Catch - Download Attachment" sap:VirtualizedContainerService.HintSize="416,223" sap2010:WorkflowViewState.IdRef="Sequence_18">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -314,13 +314,13 @@
           </Catch>
         </TryCatch.Catches>
       </TryCatch>
-      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Moving Each File to Drive Folder" sap:VirtualizedContainerService.HintSize="575,1388" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[out_lst_Attachments]">
+      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Moving Each File to Drive Folder" sap:VirtualizedContainerService.HintSize="575,974" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[out_lst_Attachments]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="x:String">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="541,1242" sap2010:WorkflowViewState.IdRef="Sequence_19">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="541,828" sap2010:WorkflowViewState.IdRef="Sequence_19">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -355,64 +355,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:MultipleAssign>
-              <TryCatch DisplayName="Try Catch - Copy Target file from local to share drive folder" sap:VirtualizedContainerService.HintSize="479,638" sap2010:WorkflowViewState.IdRef="TryCatch_2">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <TryCatch.Try>
-                  <Sequence DisplayName="Try - Copy Target file from local to share drive folder" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[str_TargetFilePath]" DisplayName="Copy Target file from local to share drive folder" sap:VirtualizedContainerService.HintSize="354,177" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[currentText]">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </ui:CopyFile>
-                  </Sequence>
-                </TryCatch.Try>
-                <TryCatch.Catches>
-                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="422,444" sap2010:WorkflowViewState.IdRef="Catch`1_2">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ActivityAction x:TypeArguments="s:Exception">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                      </ActivityAction.Argument>
-                      <Sequence DisplayName="Catch - Copy Target file from local to share drive folder" sap:VirtualizedContainerService.HintSize="416,374" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message - &quot;AccountsPayable_AddQueueItem: Unable to Copy Target file [ &quot;+currentText +&quot; ] to Share drive folder [ &quot;+str_DriveFolderPath +&quot; ]. | &quot;+ in_Config(&quot;AP_O365_MailFolder_ManualReview&quot;).ToString +&quot; | Exception message: &quot;+exception.Message" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Error" Message="[&quot;AP_DownloadMailAttachments: Unable to Copy Target file [ &quot;+currentText +&quot; ] to Share drive folder [ &quot;+str_TargetFilePath +&quot; ]. | &quot;+ in_Config(&quot;AP_O365_MailFolder_ManualReview&quot;).ToString +&quot; | Exception message: &quot;+exception.Message]">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:LogMessage>
-                        <Throw DisplayName="Throw - New SystemException(&quot;AccountsPayable_AddQueueItem: Unable to Copy Target file [ &quot;+currentText +&quot; ] to Share drive folder [ &quot;+str_DriveFolderPath +&quot; ]. | &quot;+ in_Config(&quot;AP_O365_MailFolder_ManualReview&quot;).ToString)" Exception="[New SystemException(&quot;AP_DownloadMailAttachments: Unable to Copy Target file [ &quot;+currentText +&quot; ] to Share drive folder [ &quot;+str_DriveAttachmentFolder +&quot; ]. | &quot;+ in_Config(&quot;AP_O365_MailFolder_ManualReview&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="Throw_1" />
-                      </Sequence>
-                    </ActivityAction>
-                  </Catch>
-                </TryCatch.Catches>
-              </TryCatch>
+              <iu:Copy_File DestinationFilePath="[str_TargetFilePath]" DisplayName="Copy File - Target to Drive" sap:VirtualizedContainerService.HintSize="479,224" sap2010:WorkflowViewState.IdRef="Copy_File_1" Overwrite="True" SourceFilePath="[currentText]" />
               <ui:LogMessage DisplayName="Log Message - &quot;AP_DownloadMailAttachments: Move file to Target Folder | &quot;+str_TargetFilePath" sap:VirtualizedContainerService.HintSize="479,164" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[&quot;AP_DownloadMailAttachments: Move file to Target Folder | &quot;+str_TargetFilePath]" />
             </Sequence>
           </ActivityAction>
