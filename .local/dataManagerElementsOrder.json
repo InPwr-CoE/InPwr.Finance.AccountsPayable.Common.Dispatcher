@@ -36,6 +36,32 @@
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Framework/SetTransactionStatus.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "str_SE_EmailMessagePath&Flowchart_2",
+        "str_MailSearchQuery&Flowchart_2",
+        "arr_emailsfetched&Flowchart_2",
+        "QueueRetry&Flowchart_2",
+        "ScreenshotPath&Flowchart_2",
+        "str_o365ApplicationId&Flowchart_2",
+        "secstr_o365ApplicationSecret&Flowchart_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_BusinessException",
+        "in_SystemException",
+        "in_Config",
+        "in_TransactionItem",
+        "io_RetryNumber",
+        "io_TransactionNumber",
+        "io_ConsecutiveSystemExceptions",
+        "in_ExceptionTable",
+        "in_JobData"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
     }
   ]
 }

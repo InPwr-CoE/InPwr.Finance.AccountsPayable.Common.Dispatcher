@@ -4,10 +4,8 @@
   "description": "Accounts payable receives all unprocessed invoices from vendors into a specific Outlook inbox, accounting@inpwric.com.  All invoices are received in the form of .PDF attachments, and are classified by vendor type before being processed into the organization’s ERP system, Trimble/Spectrum.  The different vendor type classifications of the attachments in known scope are: TEMP, OH, PO, Non-PO, and Credit Memo.",
   "main": "Main.xaml",
   "dependencies": {
-    "InPwr.CoE.CustomComponent.DataServices": "[1.0.1]",
-    "InPwr.CoE.CustomComponent.Mail": "[1.0.13]",
-    "InPwr.CoE.CustomComponent.Utility": "[1.0.15]",
-    "UiPath.MicrosoftOffice365.Activities": "[3.1.21]",
+    "InPwr.CoE.CustomComponent.Mail": "[1.0.14]",
+    "InPwr.CoE.CustomComponent.Utility": "[1.0.16]",
     "UiPath.System.Activities": "[24.10.6]",
     "UiPath.UIAutomation.Activities": "[24.10.10]"
   },
@@ -15,7 +13,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "24.10.1.0",
-  "projectVersion": "1.0.4",
+  "projectVersion": "1.0.5",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
