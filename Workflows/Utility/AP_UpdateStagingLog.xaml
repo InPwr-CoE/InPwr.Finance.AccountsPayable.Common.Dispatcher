@@ -13,7 +13,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1152,5450</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>834,5450</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AP_TEMP_GetMail</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -208,7 +208,7 @@
                 <OutArgument x:TypeArguments="x:String">[str_LocalFilePath]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">[str_DriveFilePath.Replace(str_DriveLetter,"C:")]</InArgument>
+                <InArgument x:TypeArguments="x:String">[str_DriveFilePath.Replace(str_DriveLetter,in_Config("AP_Project_LocalFolder").ToString)]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">

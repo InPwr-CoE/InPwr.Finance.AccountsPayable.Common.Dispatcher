@@ -41,9 +41,6 @@
       "Path": "Workflows/Framework/SetTransactionStatus.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "str_SE_EmailMessagePath&Flowchart_2",
-        "str_MailSearchQuery&Flowchart_2",
-        "arr_emailsfetched&Flowchart_2",
         "QueueRetry&Flowchart_2",
         "ScreenshotPath&Flowchart_2",
         "str_o365ApplicationId&Flowchart_2",
@@ -59,6 +56,133 @@
         "io_ConsecutiveSystemExceptions",
         "in_ExceptionTable",
         "in_JobData"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Framework/GetTransactionData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_TransactionNumber",
+        "in_Config",
+        "out_TransactionItem",
+        "io_listMailMessage",
+        "in_QueueName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Framework/Process.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "str_o365ApplicationId&Sequence_1",
+        "secstr_o365ApplicationSecret&Sequence_1",
+        "str_MailSearchQuery&Sequence_1",
+        "arr_EmailsFetched&Sequence_1",
+        "str_MailDestinationFolder&Sequence_1",
+        "str_EmailFolder&Sequence_1",
+        "str_EmailSubject&Sequence_1",
+        "lst_Attachments&Sequence_1",
+        "str_PrimaryKey&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_TransactionItem",
+        "in_Config",
+        "in_JobData"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Mail/AP_DownloadMailAttachments.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "str_DriveAttachmentFolder&Sequence_1",
+        "str_LogDateFormat&Sequence_1",
+        "str_DriveLetter&Sequence_1",
+        "str_LocalAttachmentFolder&Sequence_1",
+        "str_FileName&Sequence_1",
+        "str_TargetFilePath&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_config",
+        "in_JobData",
+        "in_Mail",
+        "out_lst_Attachments",
+        "in_str_o365ApplicationId",
+        "in_secstr_o365ApplicationSecret",
+        "in_ERPVendorType"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Utility/AP_UpdateStagingLog.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dt_ExistingRuntimeLog&Sequence_4",
+        "str_ExistingPrimaryKey&Sequence_4",
+        "str_DriveLetter&Sequence_4",
+        "str_LocalFilePath&Sequence_4",
+        "str_LocalFolderPath&Sequence_4",
+        "str_DriveFilePath&Sequence_4",
+        "index&Sequence_46",
+        "Subject&Sequence_45"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_strErrorMessage",
+        "in_TransactionItem",
+        "in_JobData",
+        "in_AttachmentCollection",
+        "out_NewPrimaryKey"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Orchestrator/AP_AddQueueItem.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "index&Sequence_1",
+        "str_OrchestratorFolder&Sequence_1",
+        "str_QueueName&Sequence_1",
+        "str_VendorType&Sequence_1",
+        "str_EntityResponse&Sequence_1",
+        "dic_EntityResponse&Sequence_1",
+        "str_DriveLogFilePath&Sequence_1",
+        "dic_FilteredBehavior&Sequence_1",
+        "str_PostProcessingRule&Sequence_1",
+        "str_TargetFilePath&Sequence_5"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_AttachmentCollection",
+        "in_strAttachmentPrimaryKey",
+        "in_JobData",
+        "in_TransactionItem"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Workflows/Utility/AP_MailMovement.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "str_MailSearchQuery&Sequence_1",
+        "str_o365ApplicationId&Sequence_1",
+        "secstr_o365ApplicationSecret&Sequence_1",
+        "arr_emailsfetched&Sequence_1",
+        "str_MailBody&Sequence_8"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_TransactionItem",
+        "in_Config",
+        "in_MailDestinationFolder",
+        "in_ExceptionTable"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
