@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1152,2760</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1358,2893</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="100">
@@ -189,7 +189,7 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Input:&#xA;1) in_JobData: Get current job information (Process and Tenant name).&#xA;2) in_Config: Response from Intialize Configuration activity as a dictionary.&#xA;3) in_TransactionItem: Current transaction as mail message.&#xA;&#xA;Description: Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. &#xA;&#xA;Output: N/A" DisplayName="Process" sap:VirtualizedContainerService.HintSize="540.6666666666666,2695.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Input:&#xA;1) in_JobData: Get current job information (Process and Tenant name).&#xA;2) in_Config: Response from Intialize Configuration activity as a dictionary.&#xA;3) in_TransactionItem: Current transaction as mail message.&#xA;&#xA;Description: Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. &#xA;&#xA;Output: N/A" DisplayName="Process" sap:VirtualizedContainerService.HintSize="541,2828" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_o365ApplicationId" />
       <Variable x:TypeArguments="ss:SecureString" Name="secstr_o365ApplicationSecret" />
@@ -207,8 +207,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - &quot;Process: Started&quot;" sap:VirtualizedContainerService.HintSize="478.6666666666667,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Process: Started&quot;]" />
-    <ui:MultipleAssign DisplayName="Multiple Assign Get Specific Content" sap:VirtualizedContainerService.HintSize="478.6666666666667,241.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:LogMessage DisplayName="Log Message - &quot;Process: Started&quot;" sap:VirtualizedContainerService.HintSize="479,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Process: Started&quot;]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign Get Specific Content" sap:VirtualizedContainerService.HintSize="479,241" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -246,9 +246,9 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:LogMessage DisplayName="Log Message - Email Subject" sap:VirtualizedContainerService.HintSize="478.6666666666667,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Email Subject : &quot;+str_EmailSubject]" />
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_config(&quot;AP_O365_Application&quot;).tostring]" CacheStrategy="None" DisplayName="Get Credential 0365Application" FolderPath="[in_Config(&quot;AP_O365_Application_AssetFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="478.6666666666667,176.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[secstr_o365ApplicationSecret]" Username="[str_o365ApplicationId]" />
-    <im:Get_Emails_From_Folder DisplayName="Get Emails From Folder (Get_Emails_From_Folder)" EmailCount="1" Emailfolder="[str_MailDestinationFolder]" EmailsRead="[arr_EmailsFetched]" sap:VirtualizedContainerService.HintSize="478.6666666666667,492.6666666666667" sap2010:WorkflowViewState.IdRef="Get_Emails_From_Folder_1" MarkAsRead="False" O365ApplicationId="[str_o365ApplicationId]" O365ApplicationSecret="[secstr_o365ApplicationSecret]" O365MailAccount="[in_Config(&quot;AP_O365_MailAccount&quot;).tostring]" O365Tenant="[in_Config(&quot;AP_O365_TenantId&quot;).ToString]" OnlyUnreadMessages="False" SearchQuery="[str_MailSearchQuery]">
+    <ui:LogMessage DisplayName="Log Message - Email Subject" sap:VirtualizedContainerService.HintSize="479,173" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Email Subject : &quot;+str_EmailSubject]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_config(&quot;AP_O365_Application&quot;).tostring]" CacheStrategy="None" DisplayName="Get Credential 0365Application" FolderPath="[in_Config(&quot;AP_O365_Application_AssetFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[secstr_o365ApplicationSecret]" Username="[str_o365ApplicationId]" />
+    <im:Get_Emails_From_Folder DisplayName="Get Emails From Folder (Get_Emails_From_Folder)" EmailCount="1" Emailfolder="[str_MailDestinationFolder]" EmailsRead="[arr_EmailsFetched]" sap:VirtualizedContainerService.HintSize="479,479" sap2010:WorkflowViewState.IdRef="Get_Emails_From_Folder_1" MarkAsRead="False" O365ApplicationId="[str_o365ApplicationId]" O365ApplicationSecret="[secstr_o365ApplicationSecret]" O365MailAccount="[in_Config(&quot;AP_O365_MailAccount&quot;).tostring]" O365Tenant="[in_Config(&quot;AP_O365_TenantId&quot;).ToString]" OnlyUnreadMessages="False" SearchQuery="[str_MailSearchQuery]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -256,7 +256,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </im:Get_Emails_From_Folder>
-    <If Condition="[arr_EmailsFetched.Count &gt;0]" DisplayName="Handle Email Fetched Condition and throwing exception" sap:VirtualizedContainerService.HintSize="478.6666666666667,629.3333333333334" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[arr_EmailsFetched.Count &gt;0]" DisplayName="Handle Email Fetched Condition and throwing exception" sap:VirtualizedContainerService.HintSize="479,627" sap2010:WorkflowViewState.IdRef="If_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -302,6 +302,12 @@
         <InArgument x:TypeArguments="ui:CurrentJobInfo" x:Key="in_JobData">[in_JobData]</InArgument>
         <InArgument x:TypeArguments="scg:IEnumerable(x:String)" x:Key="in_AttachmentCollection">[lst_Attachments]</InArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_NewPrimaryKey">[str_PrimaryKey]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AP_ReportAssetUpdate - Invoke Workflow File (Workflows\Utility\AP_ReportAssetUpdate.xaml)" sap:VirtualizedContainerService.HintSize="479,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Workflows\Utility\AP_ReportAssetUpdate.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_RuntimeLogFilePath">[in_TransactionItem.SpecificContent("Runtime_Staging_Log_FilePath").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AP_AddQueueItem - Invoke Workflow File (Workflows\Orchestrator\AP_AddQueueItem.xaml)" sap:VirtualizedContainerService.HintSize="479,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Workflows\Orchestrator\AP_AddQueueItem.xaml">
